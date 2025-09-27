@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <title>Pôster UNIP: Revisão Sistemática sobre Exposição Solar Ocupacional</title>
     <!-- Carrega o framework de estilo Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,13 +17,13 @@
             background-color: #ffffff; /* Fundo branco */
             margin: 0;
             min-height: 100vh;
+            color: #000000; /* Cor do texto padrão para preto */
         }
         .poster-container {
             width: 900px; /* Proporção 90x120 para visualização */
-            /* height: 1200px; Removido para permitir que o container cresça com o conteúdo */
             margin: 2rem auto;
             padding: 40px;
-            background-color: #ffffff;
+            background-color: #fffacd; /* Fundo amarelo pastel */
             display: flex;
             flex-direction: column;
             border: 1px solid #e5e7eb;
@@ -34,7 +34,7 @@
         .poster-header {
             display: flex;
             align-items: center;
-            border-bottom: 4px solid #0a254e;
+            border-bottom: 4px solid #000000; /* Alterado para preto */
             padding-bottom: 20px;
             flex-shrink: 0;
         }
@@ -47,21 +47,28 @@
         .header-text h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #0a254e;
+            color: #000000; /* Alterado para preto */
             line-height: 1.1;
         }
         .header-text p {
             margin-top: 10px;
             font-size: 0.9rem;
-            color: #374151;
+            color: #000000; /* Alterado para preto */
         }
 
         .poster-main {
             flex-grow: 1;
             padding-top: 20px;
             display: flex;
-            gap: 40px;
+            flex-direction: column; /* Organiza o wrapper das colunas e o rodapé verticalmente */
         }
+
+        .poster-columns-wrapper {
+            display: flex;
+            gap: 40px;
+            flex-grow: 1;
+        }
+
         .column {
             flex: 1; /* Garante que as colunas dividam o espaço igualmente */
             min-width: 0; /* Previne que o conteúdo da coluna transborde */
@@ -71,21 +78,21 @@
         }
         .poster-section {
             page-break-inside: avoid;
-            background-color: #ffffff;
+            background-color: #fffacd;
         }
         .poster-section h2 {
             font-size: 1.8rem; /* Tamanho do título da seção ajustado */
             font-weight: 700;
-            color: #0a254e;
+            color: #000000; /* Alterado para preto */
             text-align: center;
-            border-bottom: 2px solid #0a254e;
+            border-bottom: 2px solid #000000; /* Alterado para preto */
             padding-bottom: 8px;
             margin-bottom: 16px;
         }
         .poster-section .content {
             font-size: 1rem;
             line-height: 1.5;
-            color: #374151;
+            color: #000000; /* Alterado para preto */
         }
         .poster-section .content ul {
             padding-left: 20px;
@@ -93,47 +100,30 @@
         }
         .poster-section .content strong {
             font-weight: 600;
-            color: #1f2937;
+            color: #000000; /* Alterado para preto */
         }
-        .poster-section table {
-            width: 100%;
-            font-size: 0.8rem;
-            border-collapse: collapse;
-            margin-top: 10px;
+        
+        /* Estilos do Rodapé de Referências */
+        .references-footer {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 2px solid #000000;
         }
-        .poster-section th, .poster-section td {
-            border: 1px solid #d1d5db;
-            padding: 6px 8px;
-            text-align: left;
-            vertical-align: top;
+        .references-footer h2 {
+            border-bottom: none;
+            margin-bottom: 12px;
         }
-        .poster-section th {
-            background-color: #f3f4f6;
-            font-weight: 600;
-        }
-        .caption {
-            font-size: 0.8rem;
-            text-align: center;
-            color: #6b7281;
-            margin-top: 8px;
-        }
-        .references ul {
+        .references-footer .content ul {
             list-style-type: none;
             padding-left: 0;
             font-size: 0.75rem;
+            columns: 2;
+            gap: 30px;
         }
-        .image-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
+        .references-footer .content li {
+            padding-bottom: 8px; /* Espaçamento entre itens da referência */
         }
-        .image-container img {
-            width: 100%;
-            height: auto;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-        }
+
 
         /* REGRAS DE IMPRESSÃO PARA FORMATO 90cm x 120cm RETRATO (Adaptadas) */
         @media print {
@@ -162,14 +152,19 @@
                 border-bottom-width: 10px;
             }
             .logo-unip { width: 12cm; }
-            .header-text h1 { font-size: 80pt; }
+            .header-text h1 { font-size: 72pt; } /* Ajustado de 80pt */
             .header-text p { font-size: 40pt; }
 
             .poster-main {
                 display: flex;
+                flex-direction: column;
                 gap: 4cm;
                 padding-top: 2cm;
                 flex-grow: 1;
+            }
+            .poster-columns-wrapper {
+                 display: flex;
+                 gap: 4cm;
             }
             .column { 
                 display: flex;
@@ -178,16 +173,16 @@
                 width: 50%;
             }
             .poster-section h2 {
-                font-size: 60pt;
+                font-size: 54pt; /* Ajustado de 60pt */
                 border-bottom-width: 6px;
                 padding-bottom: 1cm;
                 margin-bottom: 1.5cm;
             }
             .poster-section .content { font-size: 36pt; line-height: 1.4; } /* Fonte principal para impressão */
-            .poster-section table { font-size: 24pt; }
-            .poster-section th, .poster-section td { padding: 0.5cm; }
-            .caption { font-size: 22pt; }
-            .references ul { font-size: 20pt; }
+            
+            .references-footer { border-top-width: 6px; }
+            .references-footer .content ul { font-size: 24pt; columns: 2; }
+            .references-footer .content li { padding-bottom: 1cm; }
 
             th {
                 background-color: #f3f4f6 !important;
@@ -203,134 +198,101 @@
             <div class="header-text">
                 <h1>Exposição Solar Ocupacional: Uma Revisão Sistemática sobre o Risco de Câncer de Pele</h1>
                 <p>
-                    <strong>(Nome do Autor 1); (Nome do Autor 2); (Nome do Autor 3)</strong><br>
-                    Universidade Paulista (UNIP) | Orientador: Prof. Dr. [Nome do Orientador]<br>
-                    E-mail para contato: contato@aluno.unip.br
+                    <strong>Tiago de Biagi Rebelato; Pedro Lucas P. Malachias</strong><br>
+                    Universidade Paulista (UNIP) | Orientador: Profa. Dra. Micheli Patrícia de Fátima Magri<br>
+                    E-mail para contato: tiago.rebelato@aluno.unip.br
                 </p>
             </div>
         </header>
 
         <main class="poster-main">
-            <!-- COLUNA ESQUERDA -->
-            <div class="column">
-                
-                <!-- 1. INTRODUÇÃO -->
-                <section class="poster-section">
-                    <h2>INTRODUÇÃO</h2>
-                    <div class="content">
-                        <p>O câncer de pele é a neoplasia de maior incidência no Brasil e no mundo. A radiação ultravioleta (UV) proveniente do sol é seu principal fator de risco etiológico. Trabalhadores que exercem suas atividades ao ar livre, como agricultores, pescadores e operários da construção civil, estão particularmente vulneráveis.</p>
-                        <p class="mt-2">A exposição solar ocupacional, caracterizada por ser crônica e intermitente ao longo de anos, representa um problema de saúde pública subestimado. Esta revisão sistemática visa consolidar as evidências científicas sobre o tema.</p>
-                    </div>
-                </section>
-                
-                <!-- 2. OBJETIVOS -->
-                <section class="poster-section">
-                    <h2>OBJETIVOS</h2>
-                    <div class="content">
-                        <p class="mb-2">Analisar a associação entre a exposição solar no ambiente de trabalho e o desenvolvimento de neoplasias cutâneas, com foco em:</p>
-                        <ul class="list-disc space-y-1 pl-5">
-                            <li>Sintetizar evidências sobre a associação entre <strong>exposição solar ocupacional</strong> e câncer de pele.</li>
-                            <li>Comparar riscos relativos para carcinoma basocelular (<strong>CBC</strong>), espinocelular (<strong>CEC</strong>) e melanoma.</li>
-                            <li>Apontar estratégias preventivas aplicáveis ao ambiente laboral.</li>
-                        </ul>
-                    </div>
-                </section>
-                
-                <!-- 3. METODOLOGIA -->
-                <section class="poster-section">
-                    <h2>METODOLOGIA</h2>
-                    <div class="content">
-                        <p>Revisão sistemática de artigos indexados em <strong>PubMed</strong>, <strong>Scopus</strong> e <strong>Web of Science</strong> até 2024. Foram incluídos estudos observacionais (coorte, caso-controle e transversais) que avaliaram a exposição solar ocupacional e o diagnóstico de câncer de pele.</p>
-                        <p class="mt-2">A seleção seguiu as diretrizes PRISMA, e meta-análises recentes foram utilizadas para sumarizar os riscos relativos.</p>
-                    </div>
-                </section>
-
-                <!-- 4. CONCLUSÃO -->
-                <section class="poster-section">
-                    <h2>CONCLUSÃO</h2>
-                    <div class="content">
-                        <p class="font-semibold text-lg text-[#0a254e]">A exposição solar ocupacional é um fator de risco significativo e comprovado para o câncer de pele não melanoma, especialmente o carcinoma espinocelular.</p>
-                        <p class="mt-2">A implementação rigorosa de medidas preventivas, incluindo proteção individual, reengenharia de processos e educação continuada, é fundamental para mitigar o impacto desta doença na saúde pública e ocupacional.</p>
-                    </div>
-                </section>
-
-            </div>
-            <!-- COLUNA DIREITA -->
-            <div class="column">
-                
-                <!-- 5. RESULTADOS -->
-                <section class="poster-section">
-                    <h2>RESULTADOS</h2>
-                    <div class="content">
-                        <ul class="list-disc space-y-2 mb-4">
-                            <li>Trabalhadores ao ar livre apresentam risco <strong>77% maior</strong> de carcinoma espinocelular (<strong>OR 1,77</strong>; IC95% 1,40–2,22).</li>
-                            <li>Para carcinoma basocelular, o risco é <strong>43% maior</strong> (<strong>OR 1,43</strong>; IC95% 1,23–1,66).</li>
-                            <li>Estimativas globais indicam que <strong>1 em cada 3 mortes por CPNM</strong> está associada à exposição solar no trabalho.</li>
-                        </ul>
-                        <div class="image-container">
-                             <img src="https://placehold.co/400x200/e0e7ff/374151?text=Gráfico:+Risco+Aumentado+de+CEC" alt="Gráfico Risco CEC">
-                             <p class="caption">Figura 2. Risco relativo para Carcinoma Espinocelular (CEC).</p>
-                             <img src="https://placehold.co/400x200/dbeafe/374151?text=Gráfico:+Risco+Aumentado+de+CBC" alt="Gráfico Risco CBC">
-                             <p class="caption">Figura 3. Risco relativo para Carcinoma Basocelular (CBC).</p>
+            <div class="poster-columns-wrapper">
+                <!-- COLUNA ESQUERDA -->
+                <div class="column">
+                    
+                    <!-- 1. INTRODUÇÃO -->
+                    <section class="poster-section">
+                        <h2>INTRODUÇÃO</h2>
+                        <div class="content">
+                            <p>O câncer de pele é a neoplasia de maior incidência no Brasil e no mundo. A radiação ultravioleta (UV) proveniente do sol é seu principal fator de risco etiológico. Trabalhadores que exercem suas atividades ao ar livre, como agricultores, pescadores e operários da construção civil, estão particularmente vulneráveis.</p>
+                            <p class="mt-2">A exposição solar ocupacional, caracterizada por ser crônica e intermitente ao longo de anos, representa um problema de saúde pública subestimado. Esta revisão sistemática visa consolidar as evidências científicas sobre o tema.</p>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                    
+                    <!-- 2. OBJETIVOS -->
+                    <section class="poster-section">
+                        <h2>OBJETIVOS</h2>
+                        <div class="content">
+                            <p class="mb-2">Analisar a associação entre a exposição solar no ambiente de trabalho e o desenvolvimento de neoplasias cutâneas, com foco em:</p>
+                            <ul class="list-disc space-y-1 pl-5">
+                                <li>Sintetizar evidências sobre a associação entre <strong>exposição solar ocupacional</strong> e câncer de pele.</li>
+                                <li>Comparar riscos relativos para carcinoma basocelular (<strong>CBC</strong>), espinocelular (<strong>CEC</strong>) e melanoma.</li>
+                                <li>Apontar estratégias preventivas aplicáveis ao ambiente laboral.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <!-- 3. METODOLOGIA -->
+                    <section class="poster-section">
+                        <h2>METODOLOGIA</h2>
+                        <div class="content">
+                            <p>Revisão sistemática de artigos indexados em <strong>PubMed</strong>, <strong>Scopus</strong> e <strong>Web of Science</strong> até 2024. Foram incluídos estudos observacionais (coorte, caso-controle e transversais) que avaliaram a exposição solar ocupacional e o diagnóstico de câncer de pele.</p>
+                            <p class="mt-2">A seleção seguiu as diretrizes PRISMA, e meta-análises recentes foram utilizadas para sumarizar os riscos relativos.</p>
+                        </div>
+                    </section>
 
-                <!-- 6. DISCUSSÃO -->
-                <section class="poster-section">
-                    <h2>DISCUSSÃO</h2>
-                    <div class="content">
-                        <ul class="list-disc space-y-2">
-                            <li>A associação entre exposição ocupacional e Câncer de Pele Não Melanoma (CPNM) é <strong>robusta</strong>, com maior impacto para <strong>CEC</strong> devido à exposição crônica cumulativa.</li>
-                            <li>Fatores moduladores importantes incluem o fototipo de pele (<strong>I-II Fitzpatrick</strong>), o tempo de exposição diário/anual e a adesão às políticas de proteção.</li>
-                            <li>A <strong>subnotificação</strong> de casos ocupacionais é um desafio global, dificultando a vigilância epidemiológica e o reconhecimento como doença do trabalho.</li>
-                        </ul>
-                    </div>
-                </section>
-                
-                <!-- 7. PREVENÇÃO NO AMBIENTE DE TRABALHO -->
-                <section class="poster-section">
-                    <h2>PREVENÇÃO NO AMBIENTE DE TRABALHO</h2>
-                    <div class="content">
-                        <p class="font-semibold mb-2">Estratégias para proteção dos trabalhadores expostos:</p>
-                        <ul class="list-disc space-y-1 pl-5">
-                            <li><strong>Barreiras Físicas:</strong> Uso de chapéus de aba larga, óculos de sol e vestimentas com proteção UV.</li>
-                            <li><strong>Reengenharia Ocupacional:</strong> Instalação de sombras e planejamento de tarefas para evitar horários de pico solar (10h-16h).</li>
-                            <li><strong>Protetor Solar:</strong> Fornecimento e incentivo ao uso de filtro de amplo espectro (FPS 30+), com reaplicação regular.</li>
-                            <li><strong>Educação e Vigilância:</strong> Treinamentos contínuos sobre riscos e autoexame de pele.</li>
-                        </ul>
-                    </div>
-                </section>
+                </div>
+                <!-- COLUNA DIREITA -->
+                <div class="column">
+                    
+                    <!-- 4. RESULTADOS -->
+                    <section class="poster-section">
+                        <h2>RESULTADOS</h2>
+                        <div class="content">
+                            <ul class="list-disc space-y-2 mb-4">
+                                <li>Trabalhadores ao ar livre apresentam risco <strong>77% maior</strong> de carcinoma espinocelular (<strong>OR 1,77</strong>; IC95% 1,40–2,22).</li>
+                                <li>Para carcinoma basocelular, o risco é <strong>43% maior</strong> (<strong>OR 1,43</strong>; IC95% 1,23–1,66).</li>
+                                <li>Estimativas globais indicam que <strong>1 em cada 3 mortes por CPNM</strong> está associada à exposição solar no trabalho.</li>
+                            </ul>
+                        </div>
+                    </section>
 
-                <!-- 8. SAIBA MAIS -->
-                <section class="poster-section">
-                    <h2>SAIBA MAIS</h2>
-                    <div class="content flex flex-col items-center justify-center">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.who.int/news-room/fact-sheets/detail/skin-cancer" alt="QR Code para a OMS sobre Câncer de Pele" class="w-36 h-36">
-                        <p class="caption">Aponte a câmera para acessar as recomendações da OMS sobre câncer de pele.</p>
-                    </div>
-                </section>
+                    <!-- 5. DISCUSSÃO -->
+                    <section class="poster-section">
+                        <h2>DISCUSSÃO</h2>
+                        <div class="content">
+                            <p>A evidência científica demonstra uma associação <strong>robusta</strong> entre a exposição ocupacional ao sol e o Câncer de Pele Não Melanoma (CPNM), com um impacto particularmente acentuado para o <strong>CEC</strong>, consequência da exposição crônica e cumulativa. Fatores moduladores como o fototipo de pele (<strong>I-II Fitzpatrick</strong>), o tempo de exposição diário e anual, e a adesão às políticas de proteção são determinantes na magnitude do risco. Contudo, a <strong>subnotificação</strong> de casos ocupacionais representa um desafio global, dificultando a vigilância epidemiológica e o reconhecimento formal como doença do trabalho. Diante deste cenário, a implementação de estratégias de prevenção é crucial e deve abranger o uso de <strong>barreiras físicas</strong> (vestimentas e chapéus com proteção UV), a <strong>reengenharia ocupacional</strong> para evitar horários de pico solar, o fornecimento e incentivo ao uso de <strong>protetor solar</strong> de amplo espectro, e a promoção da <strong>educação e vigilância</strong> contínuas sobre os riscos e a importância do autoexame da pele.</p>
+                        </div>
+                    </section>
 
-                <!-- 9. REFERÊNCIAS -->
-                <section class="poster-section references">
-                    <h2>REFERÊNCIAS</h2>
-                    <div class="content">
-                        <ul>
-                            <li>[1] Fartasch M, et al. Occupational sun exposure and non-melanoma skin cancer. Dtsch Arztebl Int, 2012.</li>
-                            <li>[2] Humphreys G. Shedding light on occupational exposure to the sun. Bull WHO, 2024.</li>
-                            <li>[3] Schmitt J, et al. Indoor versus outdoor sunlight and melanoma risk. Syst Rev, 2011.</li>
-                            <li>[4] IARC/WHO. Solar radiation and skin cancer burden. Lancet Planet Health, 2023.</li>
-                        </ul>
-                    </div>
-                </section>
-                
+                    <!-- 6. CONCLUSÃO -->
+                    <section class="poster-section">
+                        <h2>CONCLUSÃO</h2>
+                        <div class="content">
+                            <p class="font-semibold text-lg">A exposição solar ocupacional é um fator de risco significativo e comprovado para o câncer de pele não melanoma, especialmente o carcinoma espinocelular.</p>
+                            <p class="mt-2">A implementação rigorosa de medidas preventivas, incluindo proteção individual, reengenharia de processos e educação continuada, é fundamental para mitigar o impacto desta doença na saúde pública e ocupacional.</p>
+                        </div>
+                    </section>
+                    
+                </div>
             </div>
+            
+            <!-- 9. REFERÊNCIAS - FOOTER -->
+            <section class="poster-section references-footer">
+                <h2>REFERÊNCIAS</h2>
+                <div class="content">
+                    <ul>
+                        <li>[1] Fartasch M, et al. Occupational sun exposure and non-melanoma skin cancer. Dtsch Arztebl Int, 2012.</li>
+                        <li>[2] Humphreys G. Shedding light on occupational exposure to the sun. Bull WHO, 2024.</li>
+                        <li>[3] Schmitt J, et al. Indoor versus outdoor sunlight and melanoma risk. Syst Rev, 2011.</li>
+                        <li>[4] IARC/WHO. Solar radiation and skin cancer burden. Lancet Planet Health, 2023.</li>
+                    </ul>
+                </div>
+            </section>
         </main>
     </div>
 
 </body>
 </html>
-
-
 
 
